@@ -1,12 +1,24 @@
+import os
+import atexit
 import cv2
 import time
 import glob
+
 from emailing import send_email
 video = cv2.VideoCapture(0)
 time.sleep(1) # sleep will avoid black frames , 1 is seconds to wait until 1 seocnd.
 first_frame = None
 status_list = []
 count = 1
+
+def clean_folder():
+    images = glob.glob("images/*.png")
+    for image in images:
+        os.remove(image)
+    print("🧹 Images folder cleaned")
+
+atexit.register(clean_folder)
+image_with_object = None
 while True:
     status = 0 # when loop starts status is 0 when loop run , when there is image it is set to 1 in the bottom of the code
 
@@ -33,21 +45,38 @@ while True:
         area = cv2.contourArea(contour)
         if area < 25000 or area > 280000:
             continue
-        x,y,w,h = cv2.boundingRect(contour)
-        rectangle = cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3) # last 3 numbers are colour of the rectange , creating the rectangle in the frame
-        if rectangle.any():
-            status = 1
-            cv2.imwrite(f"images/{count}.png", frame)  # storing the frames in the images folder
-            count = count + 1
-            all_images = glob.glob("images/*.png")
-            index = int(len(all_images) / 2)
+        x, y, w, h = cv2.boundingRect(contour)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
+        status = 1
+        cv2.imwrite(f"images/{count}.png", frame)
+        count = count + 1  #  aligned
+        all_images = glob.glob("images/*.png")
+        index = int(len(all_images) / 2)
+        if all_images:
             image_with_object = all_images[index]
 
 
     status_list.append(status)
     status_list = status_list[-2:]
-    if len(status_list) >= 2 and status_list[-2] == 1 and status_list[-1] == 0:
-        send_email(image_with_object)
+    if (
+            len(status_list) >= 2
+            and status_list[-2] == 1
+            and status_list[-1] == 0
+            and image_with_object is not None
+    ):
+        print("📩 Checking condition to send email...")
+        print("status_list:", status_list)
+        print("image_with_object:", image_with_object)
+
+        if not os.path.exists(image_with_object):
+            print("❌ Image file does not exist at send time.")
+        else:
+            try:
+                send_email(image_with_object)
+            except Exception as e:
+                print("❌ Email failed:", e)
+            finally:
+                clean_folder()
 
     print(status_list)
 
