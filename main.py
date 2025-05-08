@@ -1,14 +1,17 @@
 import cv2
 import time
+import glob
 from emailing import send_email
 video = cv2.VideoCapture(0)
-time.sleep(1)
+time.sleep(1) # sleep will avoid black frames , 1 is seconds to wait until 1 seocnd.
 first_frame = None
 status_list = []
+count = 1
 while True:
     status = 0 # when loop starts status is 0 when loop run , when there is image it is set to 1 in the bottom of the code
-    time.sleep(1) # sleep will avoid black frames , 1 is seconds to wait until 1 seocnd.
+
     check, frame = video.read()
+
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGRA2GRAY) # converting all image sto gray scale
     gray_frame_gau = cv2.GaussianBlur(gray_frame, (21,21), 0) # blurring the image for a better process using Gaussianblur, 21, 21 is amount of blurness, 0 is standardd deviation
 
@@ -34,10 +37,16 @@ while True:
         rectangle = cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3) # last 3 numbers are colour of the rectange , creating the rectangle in the frame
         if rectangle.any():
             status = 1
+            cv2.imwrite(f"images/{count}.png", frame)  # storing the frames in the images folder
+            count = count + 1
+            all_images = glob.glob("images/*.png")
+            index = int(len(all_images) / 2)
+            image_with_object = all_images[index]
+
 
     status_list.append(status)
     status_list = status_list[-2:]
-    if status_list[0] == 1 and status_list[1] ==  0: # object enter and exit , then send an email
+    if len(status_list) >= 2 and status_list[-2] == 1 and status_list[-1] == 0:
         send_email()
 
     print(status_list)
