@@ -47,7 +47,7 @@ while True:
     status_list.append(status)
     status_list = status_list[-2:]
     if len(status_list) >= 2 and status_list[-2] == 1 and status_list[-1] == 0:
-        send_email()
+        send_email(image_with_object)
 
     print(status_list)
 
