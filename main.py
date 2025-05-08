@@ -1,10 +1,12 @@
 import cv2
 import time
-
+from emailing import send_email
 video = cv2.VideoCapture(0)
 time.sleep(1)
 first_frame = None
+status_list = []
 while True:
+    status = 0 # when loop starts status is 0 when loop run , when there is image it is set to 1 in the bottom of the code
     time.sleep(1) # sleep will avoid black frames , 1 is seconds to wait until 1 seocnd.
     check, frame = video.read()
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGRA2GRAY) # converting all image sto gray scale
@@ -25,12 +27,24 @@ while True:
 
     contours, check = cv2.findContours(dil_frame, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) # it will detect the contours , the white parts in the frame
     for contour in contours:
-        if cv2.contourArea(contour) < 25000: # checking if this is fake we will continue , run the loop again
+        area = cv2.contourArea(contour)
+        if area < 25000 or area > 280000:
             continue
         x,y,w,h = cv2.boundingRect(contour)
-        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3) # last 3 numbers are colour of the rectange , creating the rectangle in the frame
+        rectangle = cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3) # last 3 numbers are colour of the rectange , creating the rectangle in the frame
+        if rectangle.any():
+            status = 1
 
-    cv2.imshow("video", frame)
+    status_list.append(status)
+    status_list = status_list[-2:]
+    if status_list[0] == 1 and status_list[1] ==  0: # object enter and exit , then send an email
+        send_email()
+
+    print(status_list)
+
+
+
+    cv2.imshow("Video", frame)
 
 
     key = cv2.waitKey(1)
