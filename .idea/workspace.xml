@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21165ce9-3b7e-472f-9bd1-361e2b552f8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Webcam-Alert-App.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/array.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/read.py" afterDir="false" />
+    <list default="true" id="21165ce9-3b7e-472f-9bd1-361e2b552f8f" name="Changes" comment="Day37- sending email with middle frame and also clearing up the images folder right after execution.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,29 +23,75 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2wp6S38MiytzLcJB6PvDcvePRDG" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.read.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "last_opened_file_path": "C:/Users/venka/PycharmProjects/Webcam-Alert-App"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.emailing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/venka/PycharmProjects/Webcam-Alert-App&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\venka\PycharmProjects\Webcam-Alert-App" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="emailing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Webcam-Alert-App" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/emailing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Webcam-Alert-App" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="read" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Webcam-Alert-App" />
       <option name="ENV_FILES" value="" />
@@ -76,6 +116,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.emailing" />
         <item itemvalue="Python.read" />
       </list>
     </recent_temporary>
@@ -95,6 +137,75 @@
       <option name="presentableId" value="Default" />
       <updated>1746726164871</updated>
     </task>
+    <task id="LOCAL-00001" summary="Day36- initial Commit. using opencv Library to do the image processing.">
+      <option name="closed" value="true" />
+      <created>1746726825237</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746726825237</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Day36- Used Opencv for image capturing, the capturing process and keeping the object in rectangle is done in this code.">
+      <option name="closed" value="true" />
+      <created>1746732303246</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746732303246</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Day36- Used Opencv for image capturing, setting up status 0 and 1 for entry and exit of an object ,defining send_email function and importing it.enter is [1,1] and exit is [0,0]">
+      <option name="closed" value="true" />
+      <created>1746735584377</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746735584377</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Day37- Extracting the images from the webcam and finding the best with indexing the middle image. storing the all frames in the images folder.">
+      <option name="closed" value="true" />
+      <created>1746736816067</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746736816067</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Day37- Sending email with Attachment using imghdr and using SMTP.">
+      <option name="closed" value="true" />
+      <created>1746738378142</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746738378142</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Day37- sending email with middle frame and also clearing up the images folder right after execution.">
+      <option name="closed" value="true" />
+      <created>1746741278471</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746741278471</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Day36- initial Commit. using opencv Library to do the image processing." />
+    <MESSAGE value="Day36- Used Opencv for image capturing, the capturing process and keeping the object in rectangle is done in this code." />
+    <MESSAGE value="Day36- Used Opencv for image capturing, setting up status 0 and 1 for entry and exit of an object ,defining send_email function and importing it.enter is [1,1] and exit is [0,0]" />
+    <MESSAGE value="Day37- Extracting the images from the webcam and finding the best with indexing the middle image. storing the all frames in the images folder." />
+    <MESSAGE value="Day37- Sending email with Attachment using imghdr and using SMTP." />
+    <MESSAGE value="Day37- sending email with middle frame and also clearing up the images folder right after execution." />
+    <option name="LAST_COMMIT_MESSAGE" value="Day37- sending email with middle frame and also clearing up the images folder right after execution." />
   </component>
 </project>

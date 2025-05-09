@@ -5,6 +5,7 @@ import time
 import glob
 
 from emailing import send_email
+from threading import Thread
 video = cv2.VideoCapture(0)
 time.sleep(1) # sleep will avoid black frames , 1 is seconds to wait until 1 seocnd.
 first_frame = None
@@ -14,7 +15,12 @@ count = 1
 def clean_folder():
     images = glob.glob("images/*.png")
     for image in images:
-        os.remove(image)
+        for i in range(5):  # Try 5 times before giving up
+            try:
+                os.remove(image)
+                break  # break out of retry loop if delete was successful
+            except PermissionError:
+                time.sleep(0.5)  # wait for 0.5 sec before retrying
     print("🧹 Images folder cleaned")
 
 atexit.register(clean_folder)
@@ -72,11 +78,17 @@ while True:
             print("❌ Image file does not exist at send time.")
         else:
             try:
-                send_email(image_with_object)
+                email_thread = Thread(target=send_email, args = (image_with_object, ))
+                email_thread.daemon = True
             except Exception as e:
                 print("❌ Email failed:", e)
             finally:
-                clean_folder()
+                clean_thread = Thread(target=lambda: (time.sleep(2), clean_folder()))
+                clean_thread.daemon = True
+                email_thread.start()
+
+
+
 
     print(status_list)
 
@@ -90,3 +102,5 @@ while True:
         break
 
 video.release()
+
+clean_thread.start()
